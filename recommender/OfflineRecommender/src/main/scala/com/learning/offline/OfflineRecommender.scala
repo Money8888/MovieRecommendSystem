@@ -17,7 +17,7 @@ case class MovieRating(uid: Int, mid: Int, score: Double, timestamp: Int)
 case class Recommendation(mid: Int, score: Double)
 // 类别统计数据类
 case class UserRecs(uid: Int, recs: Seq[Recommendation])
-
+// 相关性列表
 case class MovieRecs(mid: Int, recs: Seq[Recommendation])
 
 case class MongoConfig(uri: String, db: String)
