@@ -51,13 +51,13 @@ object StreamingRecommender {
     // 配置需要隐式转换的包
     import spark.implicits._
 
-    implicit val mongoConfig: MongoConfig = MongoConfig(config("mongo.uri"), config("mongo.db"))
+    implicit val mongoConfig = MongoConfig(config("mongo.uri"), config("mongo.db"))
 
     // 导入电影相似度矩阵数据
     val simMoviesMatrix = spark.read
       .option("uri", mongoConfig.uri)
       .option("collection", MONGODB_MOVIE_RECS_COLLECTION)
-      .format("org.mongodb.spark.sql")
+      .format("com.mongodb.spark.sql")
       .load()
       .as[MovieRecs]
       .rdd
