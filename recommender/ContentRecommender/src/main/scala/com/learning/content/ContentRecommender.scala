@@ -42,7 +42,7 @@ object ContentRecommender {
     // 配置需要隐式转换的包
     import spark.implicits._
 
-    implicit val mongoConfig = MongoConfig(config("mongo.uri"), config("mongo.db"))
+    implicit val mongoConfig: MongoConfig = MongoConfig(config("mongo.uri"), config("mongo.db"))
 
     // 读取movie表数据
     val movieTagDF = spark.read
@@ -64,7 +64,8 @@ object ContentRecommender {
     val tokenizer = new Tokenizer().setInputCol("genres").setOutputCol("words")
     // wordsData格式为[action, adventure, thriller]
     val wordsData = tokenizer.transform(movieTagDF)
-    // wordsData.show(truncate = false)
+    println("wordsData++++++++++++++++++++++++++++++++++++++++++++++++")
+    wordsData.show(truncate = false)
     // 将词语序列转化成对应的词频，采用hash的方式,setNumFeatures为类别数，将超过该值的类用hash碰撞得以规避
     val hashingTF = new HashingTF().setInputCol("words").setOutputCol("wordcount").setNumFeatures(50)
     // featureData格式为(50,[19,36,40],[1.0,1.0,1.0])

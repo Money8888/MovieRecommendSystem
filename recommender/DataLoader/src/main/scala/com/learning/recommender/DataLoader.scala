@@ -152,7 +152,7 @@ object DataLoader {
   def storeDataInMongoDB(movieDF: DataFrame, ratingDF: DataFrame, tagsDF: DataFrame)(implicit mongoConfig: MongoConfig): Unit = {
     // 新建mongo客户端
     val mongoClient = MongoClient(MongoClientURI(mongoConfig.uri))
-    // 如果mongodb中有对应的数据库应该删除
+    // 如果mongodb中有对应的数据表应该删除
     // 类似于db.collection.drop
     mongoClient(mongoConfig.db)(MONGODB_MOVIE_COLLECTION).dropCollection()
     mongoClient(mongoConfig.db)(MONGODB_RATING_COLLECTION).dropCollection()

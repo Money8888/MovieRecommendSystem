@@ -19,7 +19,7 @@ public class UserRestApi {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login", produces = "application/json", method = RequestMethod.GET )
+    @RequestMapping(value = "/login", method = RequestMethod.GET )
     @ResponseBody
     public Model login(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
         User user  =userService.loginUser(new LoginUserRequest(username,password));
@@ -28,7 +28,7 @@ public class UserRestApi {
         return model;
     }
 
-    @RequestMapping(value = "/register", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     @ResponseBody
     public Model addUser(@RequestParam("username") String username,@RequestParam("password") String password,Model model) {
         if(userService.checkUserExist(username)){

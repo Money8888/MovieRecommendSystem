@@ -1,7 +1,7 @@
 package com.leaning.business.service;
 
 import com.leaning.business.model.recom.Recommendation;
-import com.atguigu.business.model.request.*;
+import com.leaning.business.model.request.*;
 import com.leaning.business.model.request.*;
 import com.leaning.business.utils.Constant;
 import com.mongodb.MongoClient;

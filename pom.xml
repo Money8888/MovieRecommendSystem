@@ -12,6 +12,7 @@
     <modules>
         <module>recommender</module>
         <module>businessServer</module>
+        <module>KafkaStreaming</module>
     </modules>
 
     <properties>
